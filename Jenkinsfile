@@ -18,8 +18,8 @@ node {
     }
     stage('Push') {
         echo "4.Push Docker Image Stage"
-        withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
-            sh "docker login -u ${dockerHubUser} -p ${dockerHubPassword} 192.168.43.110"
+        withCredentials([usernamePassword(credentialsId: 'localharbor', passwordVariable: 'localharborPassword', usernameVariable: 'localharborUser')]) {
+            sh "docker login -u ${localharborUser} -p ${localharborPassword} 192.168.43.110"
             sh "docker push 192.168.43.110/library/jenkins-demo:${build_tag}"
         }
     }
