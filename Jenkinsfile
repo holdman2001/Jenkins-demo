@@ -29,6 +29,9 @@ node('holdman-jnlp') {
             input "确认要部署线上环境吗？"
         }
         sh "sed -i 's/<BUILD_TAG>/${build_tag}/' k8s.yaml"
+        sh "cat k8s.yaml"
+        sh "echo --- "
+        sh "echo --- "
         sh "kubectl apply -f k8s.yaml --record"
     }
 }
