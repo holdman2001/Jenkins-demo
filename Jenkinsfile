@@ -23,10 +23,4 @@ node('holdman-jnlp') {
             sh "docker push 192.168.43.110/library/jenkins-demo:${build_tag}"
         }
     }
-    stage('Deploy') {
-        echo "5. Deploy Stage"
-        sh "sed -i 's/<BUILD_TAG>/${build_tag}/' k8s.yaml"
-        sh "cat k8s.yaml"
-        sh "kubectl apply -f k8s.yaml --record"
-    }
 }
