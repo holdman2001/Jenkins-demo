@@ -30,8 +30,6 @@ node('holdman-jnlp') {
         }
         sh "sed -i 's/<BUILD_TAG>/${build_tag}/' k8s.yaml"
         sh "cat k8s.yaml"
-        sh "echo --- "
-        sh "echo --- "
         sh "kubectl apply -f k8s.yaml --record"
     }
 }
